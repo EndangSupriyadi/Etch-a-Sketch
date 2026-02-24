@@ -1,0 +1,17 @@
+#container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column; /* Baris disusun ke bawah */
+}
+
+.row {
+    display: flex; /* Kolom di dalamnya disusun ke samping */
+    flex: 1;       /* Membagi tinggi container secara rata */
+}
+
+.column {
+    flex: 1;       /* Membagi lebar row secara rata */
+    border: 1px solid black;
+    box-sizing: border-box; /* Sangat penting! Agar border tidak menambah ukuran kotak */
+}
