@@ -45,8 +45,24 @@ function makeColumns(Rownum){
 
 // event listener for mouseover on the container, changes the background color of the target element to black
 container.addEventListener('mouseover', function(e){
-    e.target.style.backgroundColor = 'black';
-})
+    if(e.target.classList.contains('column')){ // Check if the target element is a column   
+        let currentOpacity = parseFloat(e.target.style.opacity) || 0; // Get current opacity, default to 0 if not set
+        if(!currentOpacity){
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`; // If opacity is not set, initialize it to 0
+
+            e.target.style.opacity = 0.1; // Set initial opacity to 0.1
+        }
+        else if(currentOpacity < 1){
+            e.target.style.opacity = (currentOpacity + 0.1).toString(); // Increase opacity by 0.1 on each mouseover until it reaches 1
+        }
+    }
+});
+
+    
+    
 
 setupGrid(16); // Initial grid setup with 16 rows and columns
 resetButton.addEventListener('click', resetGrid); // Event listener for the reset button to create a new grid based on user input
