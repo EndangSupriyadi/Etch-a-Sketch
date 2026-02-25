@@ -28,4 +28,9 @@ function makeColumns(Rownum){
     }
 }
 
+// event listener for mouseover on the container, changes the background color of the target element to black
+container.addEventListener('mouseover', function(e){
+    e.target.style.backgroundColor = 'black';
+})
+
 createGrid();
