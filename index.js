@@ -2,11 +2,26 @@
 const container = document.getElementById('container');
 let rows = document.getElementsByClassName('row');
 let columns = document.getElementsByClassName('column');
+const resetButton = document.getElementById('reset');
 
-// Creates a grid of divs with the specified number of rows and columns
-function createGrid(){
-    makeRows(16);
-    makeColumns(16);
+// Function to set up the grid based on the user input for grid size
+function setupGrid(gridSize){
+    container.innerHTML = ''; // Clear the container before creating a new grid
+    makeRows(gridSize);
+    makeColumns(gridSize);
+}
+
+// Function to reset the grid, prompts the user for a new grid size and sets up the grid accordingly
+function resetGrid(){
+    let userInput = prompt("Enter the number of rows and columns for the grid (max 100):");
+    let gridSize = parseInt(userInput);
+    if(gridSize <= 100 && gridSize > 0){
+        setupGrid(gridSize);
+    } else{
+        alert("Please enter a number less than or equal to 100.");  
+    
+        
+    }
 }
 
 // Takes a number and creates that many rows in the container
@@ -33,4 +48,5 @@ container.addEventListener('mouseover', function(e){
     e.target.style.backgroundColor = 'black';
 })
 
-createGrid();
+setupGrid(16); // Initial grid setup with 16 rows and columns
+resetButton.addEventListener('click', resetGrid); // Event listener for the reset button to create a new grid based on user input
